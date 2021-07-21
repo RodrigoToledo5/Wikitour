@@ -6,7 +6,7 @@ export default function Landing(){
     return(
         <>
             <div className="content__landingpage">
-                <NavLink to="/main">
+                <NavLink to="/home">
                     <button className="btn_landing">
                         <h1>Go</h1>
                     </button>

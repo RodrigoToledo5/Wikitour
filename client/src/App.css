@@ -209,8 +209,6 @@
   width:30px;
   height:20px;
 }
-
-
 .btn_back:hover{
   background:transparent;
   background-image: url('./components/videos/left-arrow.png');
@@ -227,7 +225,22 @@
   height:20px;
   filter:blur(1px)
 }
-
+/* Activities */
+.menu{
+  background-color:white;
+  padding: 15px;
+  min-width: 110px;
+  max-width: 110px;
+  text-align: center;
+  margin:10px;
+  height:100px;
+  border-radius: 5px;
+  border-bottom:solid #fff;
+  border-right:solid #fff;
+  cursor:pointer;
+  font-size: 11px;
+  box-shadow: 0px 12px 20px 10px rgb(46, 46, 46);
+}
 /* version movil */
 @media screen and (min-width:900px){
   .content__landingpage{

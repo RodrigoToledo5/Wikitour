@@ -9,6 +9,7 @@ export default function Aside(){
                 esto es es aside
             </span>
             <button>Ordenar</button>
+            <button>Ordenar</button>
         </div>
     )
 }
