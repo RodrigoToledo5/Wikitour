@@ -17,10 +17,10 @@ export const searchContry =(name)=>(dispatch)=> {
     fetch(`http://localhost:3001/Countries/?name=${name}`)
     .then(response => response.json())
     .then(json => {
-        dispatch({
-             type: 'SEARCH_COUNTRY',
-            payload: json });
-        });    
+       //condicion para cuando el server responde con un array vacio
+        if(json.length>0){
+            dispatch({type: 'SEARCH_COUNTRY',payload: json });
+        }});    
 }
 export const checkCountry =(name)=>(dispatch)=> { 
     fetch(`http://localhost:3001/Countries/?name=${name}`)

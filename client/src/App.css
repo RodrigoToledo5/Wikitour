@@ -63,8 +63,6 @@
   overflow: hidden;
 }
 
-
-
 .header,.aside,.footer{
   padding:30px;
 }
@@ -83,11 +81,177 @@
   flex-grow: 2;
   flex-shrink: 0;
 }
+/* main details */
+.main__detail{
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.detail_card{
+  border:solid 1px #000;
+  border-radius: 3px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+/* main activities */
+.main_activities{
+  background-color: #fff;
+  border-radius: 4px;
+  padding-top: 40px;
+  padding-bottom: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+}
+.form_section{
+  justify-content: center;
+  margin-left: 70px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 40px;
+
+}
+.creating_activity{
+  border: solid 1px #000;
+  margin-top: 22px;
+  margin-right: 10px;
+  border-radius: 3px;
+  padding-top: 15px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 20px;
+}
+.btn_send{
+  margin-left: 68px;
+}
+/*  details button */
+.form_btn1{
+  background-image: url('./components/videos/BTN1.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border:solid 1px transparent;
+  border-radius: 4px;
+  height: 40px;
+  width: 40px;
+}
+.form_btn1:hover{
+  border:solid 1px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form_btn1:active{
+  background-repeat: no-repeat;
+  border:solid transparent 1px;
+  border-radius: 4px;
+}
+.form_btn2{
+  background-image: url('./components/videos/BTN2.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border:solid 1px transparent;
+  border-radius: 4px;
+  height: 40px;
+  width: 40px;
+}
+.form_btn2:hover{
+  border:solid 1px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form_btn2:active{
+  background-repeat: no-repeat;
+  border:solid transparent 1px;
+  border-radius: 4px;
+}
+.form_btn3{
+  background-image: url('./components/videos/BTN3.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border:solid 1px transparent;
+  border-radius: 4px;
+  height: 40px;
+  width: 40px;
+}
+.form_btn3:hover{
+  border:solid 1px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form_btn3:active{
+  background-repeat: no-repeat;
+  border:solid transparent 1px;
+  border-radius: 4px;
+}
+
+.form_btn4{
+  background-image: url('./components/videos/BTN4.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border:solid 1px transparent;
+  border-radius: 4px;
+  height: 40px;
+  width: 40px;
+}
+.form_btn4:hover{
+  border:solid 1px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form_btn4:active{
+  background-repeat: no-repeat;
+  border:solid transparent 1px;
+  border-radius: 4px;
+}
+.form_btn5{
+  background-image: url('./components/videos/BTN5.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border:solid 1px transparent;
+  border-radius: 4px;
+  height: 40px;
+  width: 40px;
+}
+.form_btn5:hover{
+  border:solid 1px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form_btn5:active{
+  background-repeat: no-repeat;
+  border:solid transparent 1px;
+  border-radius: 4px;
+}
+
 .aside{
   background: transparent;
   border-bottom:1px solid #fff;
   flex-basis: 200px;
   flex-shrink: 0;
+}
+.aside__card{
+  background-color: #fff;
+  padding-top: 4px;
+  padding-bottom: 50px;
+  padding-left: 30px;
+  border-radius: 4px;
+  position: relative;
+  left: auto;
+  top: auto;
 }
 .footer{
   background: transparent;
@@ -264,16 +428,6 @@
     grid-template-rows: 80px 1fr 1fr 1fr 1fr 80px;
     grid-template-columns: repeat(3,1fr);
     background-image: url('./components/videos/Background.png');
-    animation-name:animar ;
-  }
-  .content:hover{
-    display: grid;
-    grid-template-rows: 80px 1fr 1fr 1fr 1fr 80px;
-    grid-template-columns: repeat(3,1fr);
-  }
-  @keyframes animar{
-    0% { top: 0; left: 0; }
-    100% {  background-image: url('./components/videos/background2.jpg');}
   }
   .header{
     grid-column: 1/ span 3;

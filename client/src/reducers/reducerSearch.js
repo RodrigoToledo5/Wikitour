@@ -18,18 +18,22 @@ export default function countrySearch(state=initialState,action){
                 ...state,
                 Countries:action.payload,
             };
-        case SEARCH_COUNTRY:
-            return{
-                ...state,
-                Detail:action.payload,
-            }
-        case CHECK_COUNTRY:
             
-            if(action.payload.length>0)
+        case SEARCH_COUNTRY:
+            if(action.payload.length>0){
+                return{
+                    ...state,
+                    Detail:action.payload,
+                }
+            }
+            break;
+        case CHECK_COUNTRY:
+            //if(action.payload.length>0)
                 return{
                     ...state,
                     check:state.check.concat(action.payload[0].id)
                 }
+            break;
         default:
              return state;
     }

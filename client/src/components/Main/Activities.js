@@ -83,20 +83,22 @@ export default function Activities(){
 
       return(
          <>
-           <div>Countries added:</div>
-           <span>{activity.countries.map((country,i)=><span key={i}>{country[0]&&country[0].toUpperCase()+country.substring(1,country.length)} </span>)}
-          </span>
-          <div>
-            Activity name: {activity.name}
-          </div>
-          <div>
-            Difficulty: {activity.difficulty}
-          </div>
-          <div>
-            Duration: {activity.duration}
-          </div>
-          <div>
-            Season: {activity.season&&activity.season[0]&&activity.season[0].toUpperCase()+activity.season.substring(1,activity.season.length)}
+          <div className="creating_activity">
+            <div>Countries added:</div>
+            <span>{activity.countries.map((country,i)=><span key={i}>{country[0]&&country[0].toUpperCase()+country.substring(1,country.length)} </span>)}
+            </span>
+            <div>
+              Activity name: {activity.name}
+            </div>
+            <div>
+              Difficulty: {activity.difficulty}
+            </div>
+            <div>
+              Duration: {activity.duration}
+            </div>
+            <div>
+              Season: {activity.season&&activity.season[0]&&activity.season[0].toUpperCase()+activity.season.substring(1,activity.season.length)}
+            </div>
           </div>
          </>
       )
@@ -104,46 +106,50 @@ export default function Activities(){
     return(
         <>
         <div className="main">
-          <form className="form" onSubmit={handleSubmit}>
-           
-            <div className="form_section">
-                 <input value={InputActivity} onChange={(even)=>handleInputActivity(even)} type="text" placeholder="Activity"autoComplete="off"/>
-                 <button value={InputActivity} onClick={(even)=>handleActivity(even)}>+</button>
+          <div >
+            <div className="main_activities">
+              <form className="form" onSubmit={handleSubmit}>
+              <h2>Create one activity and set countries for everyone</h2>
+                <div className="form_section">
+                    <input value={InputActivity} onChange={(even)=>handleInputActivity(even)} type="text" placeholder="Activity"autoComplete="off"/>
+                    <button value={InputActivity} onClick={(even)=>handleActivity(even)}>+</button>
+                </div>
+                
+                <div className="form_section">
+                  <div>Difficulty</div>
+                  <button className="form_btn1" value={"1"} onClick={(even)=>handleDificulty(even)}></button>
+                  <button className="form_btn2" value={"2"} onClick={(even)=>handleDificulty(even)}></button>
+                  <button className="form_btn3" value={"3"} onClick={(even)=>handleDificulty(even)}></button>
+                  <button className="form_btn4"value={"4"} onClick={(even)=>handleDificulty(even)}></button>
+                  <button className="form_btn5" value={"5"} onClick={(even)=>handleDificulty(even)}></button>
+                </div>
+
+                <div className="form_section">
+                    <input value={Inputduration} onChange={(even)=>handleChangeDuration(even)} type="text" className="form__input" placeholder="Duration"/>
+                    <button value={Inputduration} onClick={(even)=>handleDuration(even)}>+</button>
+                </div>
+
+                <div className="form_section">
+                  <div>Season</div>
+                  <button value={"winter"} onClick={(even)=>handleSeason(even)}>Winter</button>
+                  <button value={"summer"} onClick={(even)=>handleSeason(even)}>Summer</button>
+                  <button value={"autumn"} onClick={(even)=>handleSeason(even)}>Autumn</button>
+                  <button value={"spring"} onClick={(even)=>handleSeason(even)}>Spring</button>
+                </div>
+
+
+                <div className="form_section">
+                  <input value={Input} onChange={handleChange} type="text" placeholder="Country"/>
+                  <button  onClick={check_Country}>+</button>
+                  {preview? renderCountries():null}
+                </div>
+
+                <div className="btn_send">
+                  <input type="submit"/>
+                </div>
+              </form>
             </div>
-            
-             <div className="form_section">
-               <div>Difficulty</div>
-               <button value={"1"} onClick={(even)=>handleDificulty(even)}>1</button>
-               <button value={"2"} onClick={(even)=>handleDificulty(even)}>2</button>
-               <button value={"3"} onClick={(even)=>handleDificulty(even)}>3</button>
-               <button value={"4"} onClick={(even)=>handleDificulty(even)}>4</button>
-               <button value={"5"} onClick={(even)=>handleDificulty(even)}>5</button>
-             </div>
-
-             <div className="form_section">
-                <input value={Inputduration} onChange={(even)=>handleChangeDuration(even)} type="text" className="form__input" placeholder="Duration"/>
-                <button value={Inputduration} onClick={(even)=>handleDuration(even)}>+</button>
-             </div>
-
-            <div className="form_section">
-              <div>Season</div>
-              <button value={"winter"} onClick={(even)=>handleSeason(even)}>Winter</button>
-              <button value={"summer"} onClick={(even)=>handleSeason(even)}>Summer</button>
-              <button value={"autumn"} onClick={(even)=>handleSeason(even)}>Autumn</button>
-              <button value={"spring"} onClick={(even)=>handleSeason(even)}>Spring</button>
-            </div>
-
-
-            <div className="form_section">
-              <input value={Input} onChange={handleChange} type="text" placeholder="Country"/>
-              <button  onClick={check_Country}>+</button>
-              {preview? renderCountries():null}
-            </div>
-
-            <div className="form__section">
-              <input type="submit"/>
-            </div>
-          </form>
+          </div>
         </div>
       </>
     )

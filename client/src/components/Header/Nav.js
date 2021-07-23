@@ -1,4 +1,4 @@
-import {useDispatch,useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useState } from 'react';
 import { NavLink,useHistory } from 'react-router-dom';
 import { searchContry } from '../../actions';
@@ -24,10 +24,6 @@ export default function Nav(){
         <nav className="header"> 
             <NavLink className="btn" to="/home">
                         Home
-            </NavLink>
-
-            <NavLink className="btn" to="/details">
-                        Details
             </NavLink>
 
             <NavLink className="btn" to="/activities">

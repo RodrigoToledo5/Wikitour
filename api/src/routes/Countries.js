@@ -92,6 +92,8 @@ router.get('/', async (req, res) => {//arreglar esto
 					[Op.iLike]: `%${name}%`,
 				},
 			},
+			include: {model: Activity,},
+			
 		});
         //console.log(Country)
 		return res.status(200).send(country);

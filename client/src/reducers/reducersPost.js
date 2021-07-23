@@ -7,6 +7,7 @@ const inicialState={
 export default function PostActivity(state=inicialState,action){
     switch(action.type){
         case POST_COUNTRIES:
+            //console.log(action.type)
             return{
                 ...state,
                 activity:action.payload
