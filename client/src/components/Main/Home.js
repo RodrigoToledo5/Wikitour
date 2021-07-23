@@ -3,10 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContry } from '../../actions';
 
 export default function Home(){
-    //estados
     const dispatch = useDispatch();
     const state = useSelector(store => store.countrySearch);
-    //funcionales
     function sendNext(){
         if(state.Countries.length>0){
             state.offset=state.offset+10;
@@ -30,19 +28,18 @@ export default function Home(){
         else{
             state.continent=continent;
         dispatch(getContry(state.offset,state.order,state.continent))
-        }//console.log(state.order);
+        }
     }
   
     function setContinent(continent){
         setOrder(state.order,continent)
     }
     
-    useEffect(() => {
-        //console.log("se renderizo");
-        dispatch(getContry(state.offset,state.order));
-        state.Loaded=true;
+     useEffect(() => {
+         dispatch(getContry(state.offset,state.order));
+     state.Loaded=true;
     }, [dispatch])
-    //renders
+
     function checkState(){
         if(state.Countries.length>0) return true;
         else return false;
@@ -55,9 +52,9 @@ export default function Home(){
                         return(
                                 
                                     <div key={i} className="card">
-                                        <div>Name:{country.name}</div>
+                                        <div>Name: {country.name}</div>
                                         <img className="img" src={country.flagImg} alt="Flag"></img> 
-                                        <div>Continent{country.continent}</div>
+                                        <div>Continent: {country.continent}</div>
                                     </div>
                             
                             )
@@ -68,9 +65,12 @@ export default function Home(){
     }
     //makerollback evita que se muestre la pantalla en blanco cuando llegan al limite
     function makeRollback(){
+
         state.offset=0;
-        dispatch(getContry(state.offset,state.order,state.continent));
-        showCountries()
+        if(state.Loaded=true){
+            dispatch(getContry(state.offset,state.order,state.continent));
+            showCountries()
+        }
     }
     //
     return(

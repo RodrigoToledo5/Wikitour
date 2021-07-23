@@ -1,7 +1,7 @@
 import countrySearch from './reducerSearch';
-import scoreTable from './scoreTable';
+import postActivity from './reducersPost';
 import { combineReducers } from 'redux';
 
-const rootReducer=combineReducers({countrySearch,scoreTable})
+const rootReducer=combineReducers({countrySearch,postActivity})
 
 export default rootReducer;

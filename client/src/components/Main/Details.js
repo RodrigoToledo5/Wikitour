@@ -1,12 +1,10 @@
-import { useEffect }  from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getContry } from '../../actions';
+import  {useSelector} from 'react-redux';
+
 
 export default function Details(){
     const state = useSelector(store => store.countrySearch);
 
     function showdetails(){
-        if (state.Detail.length>0){
             return (
                 <>
                 <h4>ID: {state.Detail[0].id}</h4>
@@ -19,8 +17,8 @@ export default function Details(){
                 <p>Pupulation: {state.Detail[0].area}</p>
                 </>
             )
-        }
     }
+
     function shownotfinded(){
         return(
             <h2>Country not finded</h2>

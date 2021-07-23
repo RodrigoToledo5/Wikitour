@@ -6,10 +6,9 @@ const {Country, Activity} = require('../db');
 var flag=false;
 
 router.get('/', async (req, res) => {//arreglar esto
-	if(!flag){
-		const countries = await axios.get('https://restcountries.eu/rest/v2/all');//hacer otra ruta o una flag
-		flag=true;
-	}
+	
+	//const countries = await axios.get('https://restcountries.eu/rest/v2/all');//hacer otra ruta o una flag
+	
     let {name} = req.query;
 	let {offset}=req.query;
 	let {sort}=req.query;
@@ -20,7 +19,7 @@ router.get('/', async (req, res) => {//arreglar esto
 			case "AtoZ":
 				return res.json(await Country.findAll({
 					order: [['name', 'ASC']],
-					// include: {model: Activity,},
+					include: {model: Activity,},
 					where: {
 						continent: {
 							[Op.iLike]: `%${continent}%`,
@@ -32,7 +31,7 @@ router.get('/', async (req, res) => {//arreglar esto
 			case "ZtoA":
 				return res.json(await Country.findAll({
 					order: [['name', 'DESC']],
-					// include: { model: Activity},
+					include: { model: Activity},
 					where: {
 						continent: {
 							[Op.iLike]: `%${continent}%`,
@@ -44,7 +43,7 @@ router.get('/', async (req, res) => {//arreglar esto
 			case "pobAsc":
 				return res.json(await Country.findAll({
 					order: [['population', 'ASC']],
-					// include: {model: Activity},
+					include: {model: Activity},
 					where: {
 						continent: {
 							[Op.iLike]: `%${continent}%`,
@@ -56,7 +55,7 @@ router.get('/', async (req, res) => {//arreglar esto
 			case "pobDes":
 				return res.json(await Country.findAll({
 					order: [['population', 'DESC']],
-					// include: {model: Activity},
+					include: {model: Activity},
 					where: {
 						continent: {
 							[Op.iLike]: `%${continent}%`,
@@ -81,6 +80,12 @@ router.get('/', async (req, res) => {//arreglar esto
 	}
 
 	if (name) {
+		//name =await axios.get(`https://translate.google.com/?sl=auto&tl=en&text=${name}&op=translate`)
+
+		//console.log(Object.keys(name))
+		//console.log(name.data)
+		//console.log(name.data.search("Hi how are things"))
+		
 		const country = await Country.findAll({
 			where: {
 				name: {
@@ -88,7 +93,7 @@ router.get('/', async (req, res) => {//arreglar esto
 				},
 			},
 		});
-        console.log(Country)
+        //console.log(Country)
 		return res.status(200).send(country);
 	}
 	if(offset){
@@ -96,34 +101,34 @@ router.get('/', async (req, res) => {//arreglar esto
                 case "AtoZ":
                     return res.json(await Country.findAll({
                         order: [['name', 'ASC']],
-                        // include: {model: Activity,},
+                        include: {model: Activity,},
                         limit: 10,
                         offset
                     }))
                 case "ZtoA":
                     return res.json(await Country.findAll({
                         order: [['name', 'DESC']],
-                        // include: { model: Activity},
+                        include: { model: Activity},
                         limit: 10,
                         offset
                     }))
                 case "pobAsc":
                     return res.json(await Country.findAll({
                         order: [['population', 'ASC']],
-                        // include: {model: Activity},
+                        include: {model: Activity},
                         limit: 10,
                         offset
                     }))
                 case "pobDes":
                     return res.json(await Country.findAll({
                         order: [['population', 'DESC']],
-                        // include: {model: Activity},
+                        include: {model: Activity},
                         limit: 10,
                         offset
                 }))
 				default:
 					return res.status(200).json(await Country.findAll({
-                        // include: {model: Activity},
+                        include: {model: Activity},
                         limit: 10,
                         offset}))
 					// const bd=await Country.findAll({
@@ -135,28 +140,36 @@ router.get('/', async (req, res) => {//arreglar esto
 		}
 	}
 	else{
-		countries.data.forEach(async (country) => {
-			try {
-				await Country.findOrCreate({
-					where:{
-						id: country.alpha3Code,
-						name: country.name,
-						flagImg: country.flag,
-						continent: country.region,
-						capital: country.capital,
-						subregion: country.subregion,
-						area:country.area,
-						population: country.population,
-					}
-				});
-				res.status(200)
-			
-			} catch (error) {
-				console.log(error);
-			}
-		});
-		return res.status(200)
+		return res.status(200).json(await Country.findAll({
+			// include: {model: Activity},
+			limit: 10,
+			offset}))
 	}
+	// else{
+	// 	console.log("paso")
+	// 	countries.data.forEach(async (country) => {
+	// 		try {
+	// 			console.log(country.name)
+	// 			await Country.findOrCreate({
+	// 				where:{
+	// 					id: country.alpha3Code,
+	// 					name: country.name,
+	// 					flagImg: country.flag,
+	// 					continent: country.region,
+	// 					capital: country.capital,
+	// 					subregion: country.subregion,
+	// 					area:country.area,
+	// 					population: country.population,
+	// 				}
+	// 			});
+	// 			res.status(200)
+			
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	});
+	// 	return res.status(200)
+	//}
 	
 	// if (aux !== 'population') {
 	// 	let countries = await Country.findAll({

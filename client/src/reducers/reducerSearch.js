@@ -1,4 +1,4 @@
-import {GET_COUNTRIES,SEARCH_COUNTRY} from "../actions";
+import {GET_COUNTRIES,SEARCH_COUNTRY,CHECK_COUNTRY} from "../actions";
 
 const initialState={
     Countries:[],
@@ -7,7 +7,8 @@ const initialState={
     order:"",
     continent:"",
     selected:[],
-    Detail:[]
+    Detail:[],
+    check:[],
 }
 
 export default function countrySearch(state=initialState,action){
@@ -22,6 +23,13 @@ export default function countrySearch(state=initialState,action){
                 ...state,
                 Detail:action.payload,
             }
+        case CHECK_COUNTRY:
+            
+            if(action.payload.length>0)
+                return{
+                    ...state,
+                    check:state.check.concat(action.payload[0].id)
+                }
         default:
              return state;
     }
