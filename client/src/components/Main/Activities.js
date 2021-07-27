@@ -10,15 +10,20 @@ export default function Activities(){
     const [InputActivity, setInputactivity] = useState("")
     const [Input, setInput] = useState("")//capturamos el input de country para hacer el proceso de checkin en la base de datos
     const [Inputduration, setInputduration] = useState("")//capturamos el input de la duracion
-    const [preview, setpreview] = useState(true)//para mostrar el preview de los estados que se van a enviar
     const [activity, setActivity] = useState({id:[],name:null,difficulty:null,duration:null,season:null,countries:[]})// todos los estados que se van a enviar con el form
     
+    function setNullall(){
+      setActivity(
+        {id:[],name:null,difficulty:null,duration:null,season:null,countries:[]}
+      )
+    }
     function handleInputActivity(e){
       setInputactivity(e.target.value);
     }
     
     function handleActivity(e){
       e.preventDefault();
+
       setActivity({
         ...activity,
         name:e.target.value
@@ -33,11 +38,14 @@ export default function Activities(){
     function check_Country(e){
       e.preventDefault();
       dispatch(checkCountry(Input));
-      if(!activity.countries.includes(Input.toLowerCase())){//checkeamos que no haya el mismo pais
-          setActivity({
-            ...activity,
-            countries:activity.countries.concat(Input.toLowerCase()),
-            });
+      //console.log(state.check)
+      if(Input){
+        if(!activity.countries.includes(Input.toLowerCase())){//checkeamos que no haya el mismo pais ya concatenado antes enviar
+            setActivity({
+              ...activity,
+              countries:activity.countries.concat(Input.toLowerCase()),
+              });
+        }
       }
       setInput("")
     }
@@ -73,17 +81,20 @@ export default function Activities(){
     }
 
     function handleSubmit(e){
-      e.preventDefault();
-      const send={...activity,id:activity.id.concat(state.check)};
+      //e.preventDefault();
+      const send={...activity,id:activity.id.concat(state.check)};//seteamos todos los id de acuerdo a lo que nos respondio el back
       dispatch(postActivity(send))
+      setNullall()
+
     }
    
 
-    function renderCountries(){
+    function renderActivitiesbeforpost(){//funcion que muestra la actividad antes de enviar seria como un preview
 
       return(
          <>
           <div className="creating_activity">
+            <h3>Preview:</h3>
             <div>Countries added:</div>
             <span>{activity.countries.map((country,i)=><span key={i}>{country[0]&&country[0].toUpperCase()+country.substring(1,country.length)} </span>)}
             </span>
@@ -104,15 +115,15 @@ export default function Activities(){
       )
     }
     return(
-        <>
+      <>
         <div className="main">
           <div >
             <div className="main_activities">
               <form className="form" onSubmit={handleSubmit}>
-              <h2>Create one activity and set countries for everyone</h2>
+              <h2>Create an activity and set countries for each one</h2>
                 <div className="form_section">
                     <input value={InputActivity} onChange={(even)=>handleInputActivity(even)} type="text" placeholder="Activity"autoComplete="off"/>
-                    <button value={InputActivity} onClick={(even)=>handleActivity(even)}>+</button>
+                    <button className={"btn_plus"} value={InputActivity} onClick={(even)=>handleActivity(even)}>+</button>
                 </div>
                 
                 <div className="form_section">
@@ -120,32 +131,31 @@ export default function Activities(){
                   <button className="form_btn1" value={"1"} onClick={(even)=>handleDificulty(even)}></button>
                   <button className="form_btn2" value={"2"} onClick={(even)=>handleDificulty(even)}></button>
                   <button className="form_btn3" value={"3"} onClick={(even)=>handleDificulty(even)}></button>
-                  <button className="form_btn4"value={"4"} onClick={(even)=>handleDificulty(even)}></button>
+                  <button className="form_btn4" value={"4"} onClick={(even)=>handleDificulty(even)}></button>
                   <button className="form_btn5" value={"5"} onClick={(even)=>handleDificulty(even)}></button>
                 </div>
 
                 <div className="form_section">
                     <input value={Inputduration} onChange={(even)=>handleChangeDuration(even)} type="text" className="form__input" placeholder="Duration"/>
-                    <button value={Inputduration} onClick={(even)=>handleDuration(even)}>+</button>
+                    <button className={"btn_plus"} value={Inputduration} onClick={(even)=>handleDuration(even)}>+</button>
                 </div>
 
                 <div className="form_section">
                   <div>Season</div>
-                  <button value={"winter"} onClick={(even)=>handleSeason(even)}>Winter</button>
-                  <button value={"summer"} onClick={(even)=>handleSeason(even)}>Summer</button>
-                  <button value={"autumn"} onClick={(even)=>handleSeason(even)}>Autumn</button>
-                  <button value={"spring"} onClick={(even)=>handleSeason(even)}>Spring</button>
+                  <button className={"btn_set"} value={"winter"} onClick={(even)=>handleSeason(even)}>Winter</button>
+                  <button className={"btn_set"} value={"summer"} onClick={(even)=>handleSeason(even)}>Summer</button>
+                  <button className={"btn_set"} value={"autumn"} onClick={(even)=>handleSeason(even)}>Autumn</button>
+                  <button className={"btn_set"} value={"spring"} onClick={(even)=>handleSeason(even)}>Spring</button>
                 </div>
-
 
                 <div className="form_section">
-                  <input value={Input} onChange={handleChange} type="text" placeholder="Country"/>
-                  <button  onClick={check_Country}>+</button>
-                  {preview? renderCountries():null}
+                  <input value={Input} onChange={handleChange} type="text" placeholder="Add countries"/>
+                  <button className={"btn_plus"} onClick={check_Country}>+</button>
+                  {renderActivitiesbeforpost()}
                 </div>
 
-                <div className="btn_send">
-                  <input type="submit"/>
+                <div>
+                  <input className="btn_send" type="submit"/>
                 </div>
               </form>
             </div>

@@ -5,9 +5,9 @@ export default function Nav(){
 
     return(
         <div className="footer">
-        <span> 
-            Creado por Rodrigo Toledo 
-        </span>
+            <span> 
+                Created by Rodrigo Toledo 
+            </span>
         </div>
     )
 }

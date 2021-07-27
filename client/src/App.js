@@ -11,15 +11,16 @@ import Activities from './components/Main/Activities';
 function App() {
   return (
     <>
+   
         <Switch>
-        <Route exact path='/' component={Landing}/>
+          <Route exact path='/' component={Landing}/>
           <>
             <div className="content">
               <Route path='/home' component={Nav}/>
               <Route path='/details' component={Nav}/>
               <Route path='/activities' component={Nav}/>
               <Route exact path='/home' component={Home}/> 
-              <Route exact path='/details' component={Details}/> 
+              <Route path='/details' component={Details}/> 
               <Route exact path='/activities' component={Activities}/> 
               <Route path='/home' component={Aside}/>
               <Route path='/activities' component={Aside}/>
@@ -29,8 +30,8 @@ function App() {
               <Route path='/activities' component={Footer}/>
             </div>
           </>
-          </Switch>
-      
+        </Switch>
+        
     </>
   );
 }

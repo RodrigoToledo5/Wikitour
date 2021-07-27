@@ -6,9 +6,6 @@ const {Country, Activity} = require('../db');
 var flag=false;
 
 router.get('/', async (req, res) => {//arreglar esto
-	
-	//const countries = await axios.get('https://restcountries.eu/rest/v2/all');//hacer otra ruta o una flag
-	
     let {name} = req.query;
 	let {offset}=req.query;
 	let {sort}=req.query;
@@ -79,13 +76,7 @@ router.get('/', async (req, res) => {//arreglar esto
 		}
 	}
 
-	if (name) {
-		//name =await axios.get(`https://translate.google.com/?sl=auto&tl=en&text=${name}&op=translate`)
-
-		//console.log(Object.keys(name))
-		//console.log(name.data)
-		//console.log(name.data.search("Hi how are things"))
-		
+	if (name&&name.length>0) {
 		const country = await Country.findAll({
 			where: {
 				name: {
@@ -95,7 +86,6 @@ router.get('/', async (req, res) => {//arreglar esto
 			include: {model: Activity,},
 			
 		});
-        //console.log(Country)
 		return res.status(200).send(country);
 	}
 	if(offset){
@@ -133,99 +123,25 @@ router.get('/', async (req, res) => {//arreglar esto
                         include: {model: Activity},
                         limit: 10,
                         offset}))
-					// const bd=await Country.findAll({
-					// limit:10,
-					// offset
-					// });
-					// return res.status(200).send(bd);
-
 		}
 	}
 	else{
 		return res.status(200).json(await Country.findAll({
-			// include: {model: Activity},
 			limit: 10,
-			offset}))
+			}))
 	}
-	// else{
-	// 	console.log("paso")
-	// 	countries.data.forEach(async (country) => {
-	// 		try {
-	// 			console.log(country.name)
-	// 			await Country.findOrCreate({
-	// 				where:{
-	// 					id: country.alpha3Code,
-	// 					name: country.name,
-	// 					flagImg: country.flag,
-	// 					continent: country.region,
-	// 					capital: country.capital,
-	// 					subregion: country.subregion,
-	// 					area:country.area,
-	// 					population: country.population,
-	// 				}
-	// 			});
-	// 			res.status(200)
-			
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 		}
-	// 	});
-	// 	return res.status(200)
-	//}
-	
-	// if (aux !== 'population') {
-	// 	let countries = await Country.findAll({
-	// 		include: {model: Activity},
-	// 		order: [['name', order]],
-	// 	});
-	// 	return res.send(countries);
-	// } else {
-	// 	let countries = await Country.findAll({
-	// 		include: {model: Activity},
-	// 		order: [['population', order]],
-	// 	});
-	// 	return res.send(countries);
-	// }
-
- 	
 });
 
 router.get('/:id', async (req, res) => {
-	const id = req.params.id;
-    //console.log(id)
-	let country = await Country.findByPk(id, {include: Activity});
-	res.send(JSON.stringify(country));
+	
+	const id = req.params.id.toUpperCase();
+	try{
+		let country = await Country.findByPk(id, {include: Activity});
+		res.send(JSON.stringify(country));
+	}
+	catch(error){
+		res.status(404).send(error)
+	}
 });
-
-// router.get('/', async (req, res) => {
-// 	const name = req.query.name;
-// 	const order = req.query.order;
-// 	const aux = req.query.aux;
-// 	if (name) {
-// 		const country = await Country.findAll({
-// 			where: {
-// 				name: {
-// 					[Op.iLike]: `%${name}%`,
-// 				},
-// 			},
-// 		});
-// 		return res.send(country);
-// 	}
-// 	if (aux !== 'population') {
-// 		let countries = await Country.findAll({
-// 			include: {model: Activity},
-// 			order: [['name', order]],
-// 		});
-// 		return res.send(countries);
-// 	} else {
-// 		let countries = await Country.findAll({
-// 			include: {model: Activity},
-// 			order: [['population', order]],
-// 		});
-// 		return res.send(countries);
-// 	}
-// });
-
-
 
 module.exports = router;

@@ -10,7 +10,7 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-image: url('./components/videos/Landingpage.gif');
+  background-image: url('./components/images/Landingpage.gif');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -55,7 +55,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-image: url('./components/videos/Background.png');
+  background-image: url('./components/images/Background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -81,6 +81,63 @@
   flex-grow: 2;
   flex-shrink: 0;
 }
+
+/* searcher */
+.btn_searcher{
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 3px;
+  border:solid 1px;
+}
+.btn_searcher:hover{
+ background-color: gray;
+ color: honeydew;
+}
+.btn_searcher:active{
+  background-color:#fff;
+  color: #000;
+  border:solid 1px #000;
+ }
+
+/* home btn */
+.btn_setfilterplus{
+  border-radius: 5px;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 9px;
+  padding-left: 9px;
+  border:solid 1px;
+  margin-left: 5px;
+}
+
+.btn_setfilterplus:hover{
+ background-color: gray;
+ color: honeydew;
+}
+
+.btn_setfilterplus:active{
+  background-color:#fff;
+  color: #000;
+  border:solid 1px #000;
+}
+
+.btn_setfilter{
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  border:solid 1px;
+}
+.btn_setfilter:hover{
+ background-color: gray;
+ color: honeydew;
+}
+.btn_setfilter:active{
+  background-color:#fff;
+  color: #000;
+  border:solid 1px #000;
+ }
+
 /* main details */
 .main__detail{
   background-color: #fff;
@@ -95,10 +152,21 @@
 }
 .detail_card{
   border:solid 1px #000;
-  border-radius: 3px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border-top: solid gray 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
+}
+
+.img_details{
+  display: block;
+  margin-top: 25px;
+  min-width: 70vh;
+  max-width: 110vh;
+  border-radius: 10px;
+  height: 50vh;
 }
 /* main activities */
 .main_activities{
@@ -122,21 +190,71 @@
 
 }
 .creating_activity{
+  background-color: gray;
   border: solid 1px #000;
   margin-top: 22px;
   margin-right: 10px;
-  border-radius: 3px;
+  border-radius: 10px;
   padding-top: 15px;
   padding-right: 30px;
   padding-left: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
+
+.btn_plus{
+  border-radius: 5px;
+  cursor: pointer;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 7px;
+  padding-left: 7px;
+  border:solid 1px;
+}
+.btn_plus:hover{
+ background-color: gray;
+ color: honeydew;
+}
+.btn_plus:active{
+  background-color:#fff;
+  color: #000;
+  border:solid 1px #000;
+ }
+
+.btn_set{
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  border:solid 1px;
+}
+.btn_set:hover{
+ background-color: gray;
+ color: honeydew;
+}
+.btn_set:active{
+  background-color:#fff;
+  color: #000;
+  border:solid 1px #000;
+ }
+
 .btn_send{
   margin-left: 68px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  border:solid 1px;
 }
+.btn_send:hover{
+ background-color: gray;
+ color: honeydew;
+}
+.btn_send:active{
+  background-color:#fff;
+  color: #000;
+  border:solid 1px #000;
+ }
 /*  details button */
 .form_btn1{
-  background-image: url('./components/videos/BTN1.png'); 
+  background-image: url('./components/images/BTN1.png'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -156,7 +274,7 @@
   border-radius: 4px;
 }
 .form_btn2{
-  background-image: url('./components/videos/BTN2.png'); 
+  background-image: url('./components/images/BTN2.png'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -176,7 +294,7 @@
   border-radius: 4px;
 }
 .form_btn3{
-  background-image: url('./components/videos/BTN3.png'); 
+  background-image: url('./components/images/BTN3.png'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -197,7 +315,7 @@
 }
 
 .form_btn4{
-  background-image: url('./components/videos/BTN4.png'); 
+  background-image: url('./components/images/BTN4.png'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -217,7 +335,7 @@
   border-radius: 4px;
 }
 .form_btn5{
-  background-image: url('./components/videos/BTN5.png'); 
+  background-image: url('./components/images/BTN5.png'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -250,8 +368,7 @@
   padding-left: 30px;
   border-radius: 4px;
   position: relative;
-  left: auto;
-  top: auto;
+  margin-top: 15px;
 }
 .footer{
   background: transparent;
@@ -331,7 +448,7 @@
 
 .btn_next{
   background:transparent;
-  background-image: url('./components/videos/right-arrow.png');
+  background-image: url('./components/images/right-arrow.png');
   border-radius:2px;
   border:none;
   margin:2px;
@@ -346,7 +463,7 @@
 }
 .btn_next:hover{
   background:transparent;
-  background-image: url('./components/videos/right-arrow.png');
+  background-image: url('./components/images/right-arrow.png');
   border-radius:2px;
   border:none;
   margin:2px;
@@ -363,7 +480,7 @@
 
 .btn_back{
   background:transparent;
-  background-image: url('./components/videos/left-arrow.png');
+  background-image: url('./components/images/left-arrow.png');
   border-radius:2px;
   border:none;
   margin:2px;
@@ -378,7 +495,7 @@
 }
 .btn_back:hover{
   background:transparent;
-  background-image: url('./components/videos/left-arrow.png');
+  background-image: url('./components/images/left-arrow.png');
   border-radius:2px;
   border:none;
   margin:2px;
@@ -416,7 +533,7 @@
     align-items: center;
     width: 100%;
     height: 100vh;
-    background-image: url('./components/videos/Landingpage.gif');
+    background-image: url('./components/images/Landingpage.gif');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -427,7 +544,7 @@
     display: grid;
     grid-template-rows: 80px 1fr 1fr 1fr 1fr 80px;
     grid-template-columns: repeat(3,1fr);
-    background-image: url('./components/videos/Background.png');
+    background-image: url('./components/images/Background.png');
   }
   .header{
     grid-column: 1/ span 3;

@@ -1,11 +1,10 @@
 import {useDispatch} from 'react-redux';
 import {useState } from 'react';
-import { NavLink,useHistory } from 'react-router-dom';
+import { NavLink,useHistory, } from 'react-router-dom';
 import { searchContry } from '../../actions';
 
 export default function Nav(){
     const dispatch = useDispatch();
-    //const state = useSelector(store => store.countrySearch);
     const [Input, setInput] = useState("")
     let history = useHistory();
 
@@ -14,30 +13,26 @@ export default function Nav(){
     }
     function handleSumit(){
         dispatch(searchContry(Input));
-        history.push('/details')
+        history.push('/details/'+Input)
         setInput("");
     }
 
 
     return(
         <>
-        <nav className="header"> 
-            <NavLink className="btn" to="/home">
-                        Home
-            </NavLink>
+            <nav className="header"> 
+                <NavLink className="btn" to="/home">
+                    Home
+                </NavLink>
 
-            <NavLink className="btn" to="/activities">
+                <NavLink className="btn" to="/activities">
                         Activities
-            </NavLink>
+                </NavLink> 
 
-            <NavLink className="btn" to="/home">
-                        Contact
-            </NavLink>   
-
-            <input value={Input} onChange={handleChange} placeholder="Search"></input>
-            <button onClick={handleSumit}> Search</button>
-            
-        </nav>
+                <input value={Input} onChange={handleChange} placeholder="Search"></input>
+                <button className={"btn_searcher"} onClick={handleSumit}> Search</button>
+                    
+            </nav>
         </>
     )
 }
