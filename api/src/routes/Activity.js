@@ -6,8 +6,7 @@ const {Activity, Country} = require('../db');
 
 
 router.post('/', async (req, res)=>{
-  const {id,name, difficulty, duration, season}= req.body;
-  //console.log(req.body);   
+  const {id,name, difficulty, duration, season}= req.body; 
   if(name&&duration&&season&&difficulty&&id){
     try{
         const createdActivity = await Activity.create({
@@ -46,9 +45,7 @@ router.get('/', async (req, res) => {
     });
     if (activity.length)return res.status(200).send(activity[0]);
     else res.status(400)
-    
   }
-
 
   if (name) {
       const activity = await Activity.findAll({

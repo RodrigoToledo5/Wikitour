@@ -12,6 +12,8 @@ export default function Nav(){
         setInput(eve.target.value);
     }
     function handleSumit(){
+
+        
         dispatch(searchContry(Input));
         history.push('/details/'+Input)
         setInput("");

@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {//arreglar esto
 					limit: 10,
 					offset
 				}))
+				
 			case "ZtoA":
 				return res.json(await Country.findAll({
 					order: [['name', 'DESC']],
