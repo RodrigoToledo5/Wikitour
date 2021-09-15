@@ -39,3 +39,11 @@ El contenido de `client` fue creado usando: Create React App.
 - [ ] Redux
 - [ ] Express
 - [ ] Sequelize - Postgres
+
+#### Instrucciones:
+- Importante para el correcto funcionamiento del backend tiene que crearse un archivo .env dentro de la carpeta api con los siguiente valores asignados por la base de datos,puede crearse una cuenta en https://www.elephantsql.com/ crear una base de datos pequeña con la version gratuita y con los datos porporcionados usarlos en las siguientes variables:
+  DB_USER=user
+  DB_PASSWORD=pass
+  DB_HOST=urlhost
+- En la carpeta api npm install y luego npm start para correr el backend
+- En la carpeta client npm install y luego npm start para correr el frontend
