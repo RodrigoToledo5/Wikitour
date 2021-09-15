@@ -6,10 +6,11 @@ export const GET_ALL_ACTIVITIES='GET_ALL_ACTIVITIES';
 export const GET_COUNTRY_BYACTIVITIES='GET_COUNTRY_BYACTIVITIES';
 export const GET_BYID='GET_BYID';
 export const GET_LASTACTIVITY='GET_LASTACTIVITY';
+const API=`https://proyectoindividualcountries.herokuapp.com`
 
 
 export const getContry =(offset,sort,continent='')=>(dispatch)=> { 
-    fetch(`http://localhost:3001/Countries/?offset=${offset}&sort=${sort}&continent=${continent}`)
+    fetch(`${API}/Countries/?offset=${offset}&sort=${sort}&continent=${continent}`)
     .then(response => response.json())
     .then(json => {
             dispatch({
@@ -21,7 +22,7 @@ export const getContry =(offset,sort,continent='')=>(dispatch)=> {
 }
 
 export const searchContry =(name)=>(dispatch)=> { 
-    fetch(`http://localhost:3001/Countries/?name=${name}`)
+    fetch(`${API}/Countries/?name=${name}`)
     .then(response => response.json())
     .then(json => {
         if(json.length>0){
@@ -29,7 +30,7 @@ export const searchContry =(name)=>(dispatch)=> {
         }});    
 }
 export const checkCountry =(name)=>(dispatch)=> { 
-    fetch(`http://localhost:3001/Countries/?name=${name}`)
+    fetch(`${API}/Countries/?name=${name}`)
     .then(response => response.json())
     .then(json => {
         if(json.length>0){
@@ -40,7 +41,7 @@ export const checkCountry =(name)=>(dispatch)=> {
 }
 
 export const getByID =(id)=>(dispatch)=> { 
-    fetch(`http://localhost:3001/Countries/${id}`)
+    fetch(`${API}/Countries/${id}`)
     .then(response => response.json())
     .then(json => {
             dispatch({
@@ -50,7 +51,7 @@ export const getByID =(id)=>(dispatch)=> {
 }
 
 export const lastActivity =()=>(dispatch)=> { 
-    fetch(`http://localhost:3001/Activity?update=true`)
+    fetch(`${API}/Activity?update=true`)
     .then(response => response.json())
     .then(json => {
             dispatch({
@@ -60,7 +61,7 @@ export const lastActivity =()=>(dispatch)=> {
 }
 
 export const getallActivities =()=>(dispatch)=> { 
-    fetch(`http://localhost:3001/Activity`)
+    fetch(`${API}/Activity`)
     .then(response => response.json())
     .then(json => {
         if(json.length>0){
@@ -71,7 +72,7 @@ export const getallActivities =()=>(dispatch)=> {
 }
 
 export const getCountriesbyActivities =(activity,offset,sort,continent)=>(dispatch)=> { 
-    fetch(`http://localhost:3001/Activity?name=${activity}&offset=${offset}&sort=${sort}&continent=${continent}`)
+    fetch(`${API}/Activity?name=${activity}&offset=${offset}&sort=${sort}&continent=${continent}`)
     .then(response => response.json())
     .then(json => {
             dispatch({
@@ -83,7 +84,7 @@ export const getCountriesbyActivities =(activity,offset,sort,continent)=>(dispat
 export const postActivity =(activity)=>(dispatch)=> { 
 
     var data=JSON.stringify(activity)
-    fetch('http://localhost:3001/Activity',{
+    fetch(`${API}/Activity`,{
         headers: {
             'Content-Type': 'application/json'
           },

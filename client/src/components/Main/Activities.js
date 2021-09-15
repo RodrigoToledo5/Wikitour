@@ -81,11 +81,15 @@ export default function Activities(){
     }
 
     function handleSubmit(e){
-      //e.preventDefault();
-      const send={...activity,id:activity.id.concat(state.check)};//seteamos todos los id de acuerdo a lo que nos respondio el back
-      dispatch(postActivity(send))
+      e.preventDefault();
+      if(state.check.length>0){
+        const send={...activity,id:activity.id.concat(state.check)};//seteamos todos los id de acuerdo a lo que nos respondio el back
+        dispatch(postActivity(send))
+      }
+      else{
+        alert("Countries not has setting")
+      }
       setNullall()
-
     }
    
 

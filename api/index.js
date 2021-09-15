@@ -21,6 +21,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const {Country} = require('./src/db');
 const axios = require('axios');
+let port= process.env.PORT||3001
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(async() => {
@@ -45,7 +46,7 @@ conn.sync({ force: false }).then(async() => {
   });
   console.log("Loaded")
   //return res.status(200)
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  server.listen(port, () => {
+    console.log(`%s listening at ${port}`); // eslint-disable-line no-console
   });
 });

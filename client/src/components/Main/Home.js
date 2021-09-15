@@ -140,6 +140,7 @@ export default function Home(){
             {continent&&<h5>Filter by:{continent}</h5>}
 
             {renderActivities()}
+            
             {showCountries()}
             <div className="cointainer_btn_pg">
                 {checkOffset()&&renderbtnBack()}
