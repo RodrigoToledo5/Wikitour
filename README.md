@@ -41,7 +41,7 @@ El contenido de `client` fue creado usando: Create React App.
 - [ ] Sequelize - Postgres
 
 #### Instrucciones:
-- Importante para el correcto funcionamiento del backend tiene que crearse un archivo .env dentro de la carpeta api con los siguiente valores proporsionados por la base de datos, o puede crearse una cuenta en https://www.elephantsql.com/ crear una base de datos pequeña con la version gratuita y con los datos porporcionados usarlos en las siguientes variables:
+- Importante para el correcto funcionamiento del backend tiene que crearse un archivo .env dentro de la carpeta api con los valores proporsionados por la base de datos, o puede crearse una cuenta en https://www.elephantsql.com/ crear una base de datos pequeña con la version gratuita y con los datos porporcionados usarlos en las siguientes variables:
   DB_USER=user
   DB_PASSWORD=pass
   DB_HOST=urlhost
